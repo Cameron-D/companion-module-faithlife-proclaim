@@ -281,7 +281,7 @@ instance.prototype.action = function(action) {
     self.system.emit('rest_get', url_base + app_command, function(err, result) {
         if (err !== null) {
             self.log('error', 'HTTP GET Request failed (' + result.error.code + ')');
-            self.status(self.STATUS_WARNING, "No Connection");
+            self.status(self.STATUS_ERROR, "No Connection");
         } else {
             self.log(result.data);
             self.status(self.STATUS_OK, "Connected");
@@ -326,14 +326,14 @@ instance.prototype.onair_poll = function() {
     var self = this;
 
     if (!self.config.ip && !self.config.port) {
-        self.status(self.STATUS_WARNING, "No Connection");
+        self.status(self.STATUS_WARNING, "No Configuration");
         return;
     }
 
     self.system.emit('rest_get', 'http://' + self.config.ip + ':' + self.config.port + '/onair/session', function(err, result) {
         if (err !== null) {
             self.log('error', 'HTTP GET Request failed (' + result.error.code + ')');
-            self.status(self.STATUS_WARNING, "No Connection");
+            self.status(self.STATUS_ERROR, "No Connection");
         } else {
             if (result.data.length > 30) {
                 self.on_air = true;
