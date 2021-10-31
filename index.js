@@ -264,7 +264,11 @@ instance.prototype.action = function(action) {
             app_command = 'GoOffAir';
             break;
         case 'on_air_toggle':
-            app_command = 'GoOnAirToggle';
+            if (self.on_air) {
+                app_command = 'GoOffAir';
+            } else {
+                app_command = 'GoOnAir';
+            }
             break;
         case 'song_part':
             part = self.song_parts[action.options.song_part].label;

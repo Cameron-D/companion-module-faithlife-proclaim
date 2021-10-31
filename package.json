@@ -1,6 +1,6 @@
 {
     "name": "faithlife-proclaim",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "description": "Companion module for controlling Faithlife Proclaim",
     "manufacturer": "Faithlife",
     "product": "Proclaim",
